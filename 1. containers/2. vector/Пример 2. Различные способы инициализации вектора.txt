@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <iterator>
+using namespace std;
+
+int main()
+{
+	// создание вектора, содержащего 3 элемента со значением 0
+	vector<int> a(3, 0);
+	int ar[4] = { 1, 2, 3, 4 };
+	// создание вектора, содержащего 3 первых элемента массива
+	vector<int> b(ar, ar + 3);
+	// создание копии вектора b
+	vector<int> c(b);
+
+	// вывод  векторов
+	ostream_iterator<int, char> out(cout, " ");
+	cout << "Vector a: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+	cout << "Vector b: ";
+	copy(b.begin(), b.end(), out);
+	cout << endl;
+	cout << "Vector c: ";
+	copy(c.begin(), c.end(), out);
+	cout << endl;
+}

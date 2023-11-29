@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+#include <locale>
+using namespace std;
+
+// https://rsdn.ru/forum/cpp/1854733.1
+
+int main()
+{
+	wcout.imbue(locale("rus_rus.866"));
+	wcin.imbue(locale("rus_rus.866"));
+
+	wstring str = L"åíåãíødshh";
+	wcout << str << "\n";
+
+	wcout << "Enter string " << endl;
+	wcin >> str;
+	wcout << str << "\n";
+
+}

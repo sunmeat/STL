@@ -1,0 +1,21 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main()
+{
+	// начальная инициализаия списка
+	int ar[] = { 1, 1, 2, 3, 3, 2, 1 };
+	list<int> a(ar, ar + 6);
+	list<int>::iterator it;
+
+	// вывод  списка с помощью итератора
+	for (it = a.begin(); it != a.end(); it++) cout << *it << " ";
+	cout << endl;
+
+	// удаление повторов (повторы удаляются, только если встречаются подряд)
+	a.unique();
+
+	for (it = a.begin(); it != a.end(); it++) cout << *it << " ";
+	cout << endl;
+}

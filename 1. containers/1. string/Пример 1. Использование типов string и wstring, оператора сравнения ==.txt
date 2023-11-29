@@ -1,0 +1,42 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	// объ€вление строки с помощью специализации шаблона
+	basic_string <char> str1("TEST");
+
+	// объ€вление строки с помощью typedef string
+	// эти два варианта объ€влени€ эквивалентны
+	string str2("TEST");
+
+	// вывод строк
+	cout << "String str1: " << str1 << "\nString str2: " << str2 << endl;
+
+	// выполнение операции сравнени€ объектов типа basic_string<char>
+	cout << "Operation: (str1 == str2)" << endl;
+	if (str1 == str2)
+		cout << "Strings str1 & str2 are equal." << endl;
+	else
+		cout << "Strings str1 & str2 are not equal." << endl;
+
+	// L Ц используетс€ дл€ объ€влени€ UNICODE строк 
+	// объ€вление строки с помощью специализации шалона
+	basic_string <wchar_t> str3(L"TESTING");
+
+	// объ€вление строки с помощью typedef wstring
+	// эти два варианта объ€влени€ эквивалентны
+	wstring str4(L"JUMPING");
+
+	// вывод строк 
+	// поскольку строки UNICIDE используетс€ объект потока вывода wcout
+	wcout << "\nString str3: " << str3 << " \nString str4: " << str4 << endl;
+
+	// выполнение операции сравнени€ объектов типа basic_string<wchar_t>	
+	cout << "Operation: (str3 == str4)" << endl;
+	if (str3 == str4)
+		cout << "Strings str3 & str4 are equal." << endl;
+	else
+		cout << "Strings str3 & str4 are not equal." << endl;
+}

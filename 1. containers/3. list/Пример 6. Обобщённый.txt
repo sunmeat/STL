@@ -1,0 +1,265 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main()
+{
+	/*
+	void push_back(const T &val);
+	Добавляет в конец списка элемент со значением, заданным параметром val.
+
+	iterator begin();
+	const_iterator begin() const;
+	Возвращает итератор для первого элемента в списке.
+
+	const_iterator end() const;
+	iterator end();
+	Возвращает итератор для конца списка.
+
+	template <class InIter> void assign(InIter start, InIter end);
+	Очищает список и помещает в него последовательность, определяемую параметрами start и end.
+
+	void assign(size_type num, const T &val);
+	Помещает в список num элементов со значением val.
+	*/
+
+	list<int> c1, c2;
+	list<int>::const_iterator cIter;
+
+	c1.push_back(10);
+	c1.push_back(20);
+	c1.push_back(30);
+	c2.push_back(40);
+	c2.push_back(50);
+	c2.push_back(60);
+
+	cout << "c1 =";
+	for (cIter = c1.begin(); cIter != c1.end(); cIter++)
+		cout << " " << *cIter;
+	cout << endl;
+
+	c1.assign(++c2.begin(), c2.end());
+	cout << "c1 =";
+	for (cIter = c1.begin(); cIter != c1.end(); cIter++)
+		cout << " " << *cIter;
+	cout << endl;
+
+	c1.assign(7, 4);
+	cout << "c1 =";
+	for (cIter = c1.begin(); cIter != c1.end(); cIter++)
+		cout << " " << *cIter;
+	cout << endl;
+
+	/*
+	reference back();
+	const_reference back() const;
+	Возвращает ссылку на последний элемент в списке.
+
+	reference front();
+	const_reference front() const;
+	Возвращает ссылку на первый элемент в списке.
+	*/
+
+	list <int> c3;
+
+	c3.push_back(10);
+	c3.push_back(11);
+	c3.push_back(12);
+	c3.push_back(13);
+	c3.push_back(14);
+
+	int& i = c3.back();
+	const int& ii = c3.front();
+
+	cout << "The last integer of c1 is " << i << endl;
+	i--;
+	cout << "The next-to-last integer of c1 is " << ii << endl;
+
+	/*
+	size_type size( ) const;
+	Возвращает количество элементов в списке
+
+	void clear();
+	Удаляет все элементы из списка.
+
+	bool empty() const;
+	Возвращает значение истины, если используемый список пуст, и значение лжи в противном случае.
+	*/
+
+	cout << "The size of the list is initially " << c3.size() << endl;
+	c3.clear();
+	cout << "The size of list after clearing is " << c3.size() << endl;
+
+	if (c3.empty())
+		cout << "The list is empty." << endl;
+	else
+		cout << "The list is not empty." << endl;
+
+	/*
+	void push_front(const T &val);
+	Добавляет в начало списка элемент со значением, заданным параметром val.
+
+	iterator erase(iterator i);
+	Удаляет элемент, адресуемый итератором i, возвращает итератор для элемента, расположенного после удаленного.
+
+	iterator erase(iterator start, iterator end);
+	Удаляет элементы в диапазоне, задаваемом параметрами start и end, возвращает итератор для элемента,
+	расположенного за последним удалённым элементом.
+	*/
+
+	list <int>::iterator Iter;
+
+	c3.push_front(10);
+	c3.push_front(20);
+	c3.push_front(30);
+	c3.push_front(40);
+	c3.push_front(50);
+	cout << "The initial list is:";
+	for (Iter = c3.begin(); Iter != c3.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	c3.erase(c3.begin());
+	cout << "After erasing the first element, the list becomes:";
+	for (Iter = c3.begin(); Iter != c3.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+	Iter = c3.begin();
+	Iter++;
+	c3.erase(Iter, c3.end());
+	cout << "After erasing all elements but the first, the list becomes: ";
+	for (Iter = c3.begin(); Iter != c3.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	/*
+	iterator insert(iterator i, const T &val = T());
+	Вставляет значение val непосредственно перед элементом, заданным параметром i, возвращает итератор для этого элемента.
+
+	void insert(iterator i, size_type num, const T &val);
+	Вставляет num копий значения val непосредственно перед элементом, заданным параметром i.
+
+	template <class InIter> void insert(iterator i, InIter start, InIter end);
+	Вставляет в список последовательность, определяемую параметрами start и end, непосредственно перед элементом, заданным параметром i.
+	*/
+
+	list <int> c4, c5;
+
+	c4.push_back(10);
+	c4.push_back(20);
+	c4.push_back(30);
+	c5.push_back(40);
+	c5.push_back(50);
+	c5.push_back(60);
+
+	cout << "c4 =";
+	for (Iter = c4.begin(); Iter != c4.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	Iter = c4.begin();
+	Iter++;
+	c4.insert(Iter, 100);
+	cout << "c4 =";
+	for (Iter = c4.begin(); Iter != c4.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	Iter = c4.begin();
+	Iter++;
+	Iter++;
+	c4.insert(Iter, 2, 200);
+
+	cout << "c4 =";
+	for (Iter = c4.begin(); Iter != c4.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	c4.insert(++c4.begin(), c5.begin(), --c5.end());
+
+	cout << "c4 =";
+	for (Iter = c4.begin(); Iter != c4.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	/*
+	size_type max_size() const;
+	Возвращает максимальное число элементов, которое может содержать список.
+	*/
+	cout << "Maximum possible length of the list is " << c1.max_size() << "." << endl;
+
+	/*
+	void pop_back();
+	Удаляет последний элемент в списке.
+
+	void pop_front();
+	Удаляет первый элемент в списке.
+	*/
+
+	cout << "Before deleting c5 =";
+	for (Iter = c5.begin(); Iter != c5.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+	c5.pop_back();
+	cout << "After deleting c5 =";
+	for (Iter = c5.begin(); Iter != c5.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	cout << "Before deleting c4 =";
+	for (Iter = c4.begin(); Iter != c4.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+	c4.pop_front();
+	cout << "After deleting c4 =";
+	for (Iter = c4.begin(); Iter != c4.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	/*
+	void remove(const T &val);
+	Удаляет из списка элементы со значением, заданным параметром val.
+	*/
+
+	c1.clear();
+	c1.push_back(5);
+	c1.push_back(100);
+	c1.push_back(5);
+	c1.push_back(200);
+	c1.push_back(5);
+	c1.push_back(300);
+
+	cout << "The initial list is c1 =";
+	for (Iter = c1.begin(); Iter != c1.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	c1.remove(5);
+	cout << "After removing elements with value 5, the list becomes c2 =";
+	for (Iter = c1.begin(); Iter != c1.end(); Iter++)
+		cout << " " << *Iter;
+	cout << endl;
+
+	/*
+	void reverse();
+	Реверсирует список.
+	*/
+
+	list <int>::iterator c1_Iter;
+	c1.clear();
+	c1.push_back(10);
+	c1.push_back(20);
+	c1.push_back(30);
+
+	cout << "c1 =";
+	for (c1_Iter = c1.begin(); c1_Iter != c1.end(); c1_Iter++)
+		cout << " " << *c1_Iter;
+	cout << endl;
+
+	c1.reverse();
+	cout << "Reversed c1 =";
+	for (c1_Iter = c1.begin(); c1_Iter != c1.end(); c1_Iter++)
+		cout << " " << *c1_Iter;
+	cout << endl;
+
+}

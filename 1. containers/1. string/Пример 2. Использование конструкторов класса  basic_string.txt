@@ -1,0 +1,29 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	const char* c_str = "C style string";
+	// конструктор, который принимает строку в стиле C
+	string s1 = string(c_str);
+	cout << s1 << endl;
+
+	// конструктор, который принимает строку в стиле C и количество символов
+	string s2 = string(&c_str[2], 5);
+	cout << s2 << endl;
+
+	string s3 = "basic_string object";
+	// конструктор, который принимает объект класса basic_string
+	string s4 = string(s3);
+	cout << s4 << endl;
+
+	// конструктор, который принимает объект класса basic_string,
+	// начальный индекс и общее количество символов
+	string s5 = string(s3, 6, 6);
+	cout << s5 << endl;
+
+	// конструктор, который принимает количество символов и значение символа
+	string s6 = string(10, 'A');
+	cout << s6 << endl;
+}

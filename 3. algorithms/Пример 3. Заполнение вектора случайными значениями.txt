@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+int gen()
+{
+	return rand() % 10;
+}
+
+int main()
+{
+	vector<int> a(10);
+	generate(a.begin(), a.end(), gen);
+	ostream_iterator<int> out(cout, " ");
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+}

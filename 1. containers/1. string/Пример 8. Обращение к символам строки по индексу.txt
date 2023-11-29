@@ -1,0 +1,27 @@
+#include <string>
+#include <iostream>
+#include <exception>
+using namespace std;
+
+int main()
+{
+	string s("ABCDE");
+	// вывод 3-ого символа строки
+	cout << "operator[](2): " << s[2] << endl;
+	cout << "s.at(2): " << s.at(2) << endl;
+	
+	// генерация исключения при выходе за пределы строки
+	try
+	{
+		cout << "try s.at(100): ";
+		cout << s.at(100) << endl;
+	}
+	catch (out_of_range e)
+	{
+		cout << "exception: " << e.what() << endl;
+	}
+	
+	// изменение 1-ого символа строки
+	s[0] = '1';
+	cout << s << endl;
+}

@@ -1,0 +1,42 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main()
+{
+	// создание пустого списка
+	list<int> a;
+	list<int>::iterator it;
+
+	// вставка элементов в конец списка
+	for (int i = 0; i < 10; i++)
+		a.push_back(i);
+
+	// вывод  списка с помощью итератора
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+	a.clear();
+
+	// вставка элементов в начало списка
+	for (int i = 0; i < 10; i++)
+		a.push_front(i);
+	// вывод  списка с помощью итератора
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// вставка элемента после 1-ого элемента списка
+	a.insert(++a.begin(), 20);
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// вставка диапазона элементов перед последним элементом списка
+	int ar[] = { 30, 31, 32 };
+	a.insert(--a.end(), ar, ar + 3);
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+}

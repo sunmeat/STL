@@ -1,0 +1,25 @@
+#include <list>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	list<int> l;
+	for (int i = 0; i < 5; i++)
+		l.push_back(i);
+
+	list<int>::iterator li;
+
+	// итератор поддерживает сравнение != и оператор ++/--
+	for (li = l.begin(); li != l.end(); li++)
+		cout << *li << " ";
+	cout << endl;
+
+	for (li = --l.end(); ; li--)
+	{
+		cout << *li << " ";
+		if (li == l.begin()) break;
+	}
+		
+	cout << endl;
+}

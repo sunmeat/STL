@@ -1,0 +1,24 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	string str1("StringOne");
+	string str2("StringTwo");
+	cout << "str1 string is = " << str1 << endl;
+	cout << "str2 string is = " << str2 << endl;
+
+	// очистка строки с помощью clear
+	str1.clear();
+	cout << "After str1.clear() " << str1 << endl;
+
+	// удаление всех символов, начиная с 6
+	str2.erase(6);
+	cout << "After str2.erase(6) " << str2 << endl;
+
+	// очистка строки с помощью erase
+	str2.erase();
+	cout << "After str2.erase() " << str2 << endl;
+
+}

@@ -1,0 +1,51 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+bool isEven(int a)
+{
+	return (a % 2 == 0);
+}
+
+int main()
+{
+	// создание пустого списка
+	list<int> a;
+	list<int>::iterator it;
+
+	// заполнение списка элементами
+	for (int i = 0; i < 20; i++)
+		a.push_back(i);
+
+	// вывод  списка с помощью итератора
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// удаление 1-ого элемента списка
+	a.pop_front();
+	// удаление последнего элемента списка
+	a.pop_back();
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+	a.push_back(1);
+
+	// удаление всех элементов со значением 1
+	a.remove(1);
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// удаление всех элементов с четными значениями
+	a.remove_if(isEven);
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// удаление  элементов списка со 2-ого до предпоследнего
+	a.erase(++a.begin(), --a.end());
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+}

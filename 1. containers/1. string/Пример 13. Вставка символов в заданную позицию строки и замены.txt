@@ -1,0 +1,24 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	string s1  = "one  two";
+	string s3  = "three";
+	string s4  = "four";
+	string s5  = "five";
+	
+	//вставки строки s3 после 4-ого символа строки s1
+	s1.insert(4,s3);
+	cout << "s1.insert(4,s3) Result: " << s1 << endl;
+	
+	//замена 5-ти символов строки s1, начиная с 4-го, строкой s4
+	s1.replace(4,5,s4);
+	cout << "s1.replace(3,5,s4) Result: " << s1 << endl;
+	
+	//замена 3-х символов строки s1, начиная с 0-го, строкой s5
+	s1.replace(0,3,s5);
+	cout << "s1.replace(8,3,s5) Result: " << s1 << endl;
+
+}

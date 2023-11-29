@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+int main()
+{
+	int ar[] = { 1, 0, 2, 0, 3, 0, 4 };
+	vector<int> a(ar, ar + 7);
+
+	ostream_iterator<int> out(cout, " ");
+	cout << "Initial state: ";
+	copy(a.begin(), a.end(), out); cout << endl;
+
+	// удаление элементов со значением 0
+	// итератор end() не перемещается, поэтому при выводе 
+	// отображаются лишние элементы
+	vector<int>::iterator it;
+	it = remove(a.begin(), a.end(), 0);
+	cout << "After remove 0: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// перемещение итератора end() в новый конец контейнера
+	cout << "After correct end: ";
+	a.erase(it, a.end());
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+}

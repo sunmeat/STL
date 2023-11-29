@@ -1,0 +1,53 @@
+#include <iostream>   
+#include <queue>      
+#include <vector>     
+#include <functional> 
+using namespace std;
+
+class comparator
+{
+	bool reverse;
+
+public:
+	comparator(const bool& rev = false)
+	{
+		reverse = rev;
+	}
+
+	bool operator() (const int& lhs, const int&rhs) const
+	{
+		if (reverse) return (lhs>rhs);
+		else return (lhs<rhs);
+	}
+};
+
+int main()
+{
+	int myints[] = { 10, 60, 50, 20 };
+
+	priority_queue<int> first;
+	priority_queue<int> second(myints, myints + 4);
+	priority_queue<int, vector<int>, greater<int>> third(myints, myints + 4);
+
+	// using comparator:
+	typedef priority_queue<int, vector<int>, comparator> mypq;
+
+	mypq fourth;                  // less-than comparison
+	mypq fifth(comparator(true)); // greater-than comparison
+
+	////////////////////////////////////////////////////////////////////////////////////
+
+	first.push(30);
+	first.push(100);
+	first.push(25);
+	first.push(40);
+
+	cout << "Popping out elements...";
+	while (!first.empty())
+	{
+		cout << ' ' << first.top();
+		first.pop();
+	}
+	cout << '\n';
+
+}

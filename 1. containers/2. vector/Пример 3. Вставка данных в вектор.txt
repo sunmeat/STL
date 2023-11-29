@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <iterator>
+using namespace std;
+
+int main()
+{
+	// создание пустого вектора
+	vector<int> a;
+	// заполнение вектора элементами
+	for (int i = 0; i < 5; i++)
+		a.push_back(i);
+
+	// вывод  векторов с использованием итераторов
+	vector<int>::iterator it;
+	cout << "Initial state: " << endl;
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// вставка перед вторым элементом числа 10
+	a.insert(a.begin() + 2, 10);
+	cout << "After insert 10: " << endl;
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+
+	// вставка в начало вектора диапазона значений из массива
+	int ar[5] = { 20, 21, 22, 23, 24 };
+	a.insert(a.begin(), ar, ar + 4);
+	cout << "After insert range: " << endl;
+	for (it = a.begin(); it != a.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+}
+

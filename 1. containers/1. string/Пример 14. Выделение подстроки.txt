@@ -1,0 +1,18 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	// выделение подстроки
+	string s1 = "one string in another string";
+	
+	// вся строка 
+	cout << "s1.substr(): " << s1.substr() << endl;
+	
+	// часть строки, начиная с 14 элемента
+	cout << "s1.substr(14): " << s1.substr(14) << endl;
+	
+	// 6 символов строки, начиная с 4 элемента
+	cout << "s1.substr(4, 6): " << s1.substr(4, 6) << endl;
+}

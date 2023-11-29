@@ -1,0 +1,26 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	vector<int> b;
+	vector<int>::iterator pb;
+
+	for (int i = 0; i < 3; i++)
+		b.push_back(i);
+
+	// итератор произвольного доступа
+	// позволяет обращаться к элементами контейнера по индексу
+	for (int i = 0; i < (int)b.size(); i++)
+		cout << b[i] << " ";
+	cout << endl;
+
+	// итератор поддерживает сравнение, сложение с числом
+	for (pb = b.begin(); pb < b.end(); pb += 1)
+		cout << *pb << " ";
+	cout << endl;
+
+	// вывод количества элементов как растояние между итераторами
+	cout << "Vector contains " << (int)(b.end() - b.begin()) << " elements" << endl;
+}

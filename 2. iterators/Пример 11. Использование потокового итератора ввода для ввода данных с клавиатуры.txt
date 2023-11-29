@@ -1,0 +1,27 @@
+#include <vector>
+#include <iterator>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	vector<int> b;
+	cout << "Input: " << endl;
+
+	// итератор чтения из потока
+	istream_iterator<int> in(cin);
+
+	// итератор, установленный на конец потока - завершение ввода
+	istream_iterator<int> inEnd;
+
+	// ввод продолжается до тех пор, пока не произойдет ошибка,
+	// например, при введении символа вместо числа
+	copy(in, inEnd, back_inserter(b));
+
+	// вывод данных из вектора
+	cout << "Data in vector: " << endl;
+	ostream_iterator<int> out(cout, " ");
+	copy(b.begin(), b.end(), out);
+	cout << endl;
+
+}

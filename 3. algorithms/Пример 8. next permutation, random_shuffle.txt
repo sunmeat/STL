@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <windows.h>
+using namespace std;
+
+int main()
+{
+	string word;
+	cin >> word;
+
+	random_shuffle(word.begin(), word.end());
+	cout << word << "\n";
+	Sleep(2000);
+
+	sort(word.begin(), word.end());
+	cout << word << "\n";
+	Sleep(2000);
+
+	int m = 0;
+	// http://www.cplusplus.com/reference/algorithm/next_permutation/
+	while (next_permutation(word.begin(), word.end()))
+	{
+		cout << "combination # " << ++m << ": " << word << "\n";
+	}
+		
+}

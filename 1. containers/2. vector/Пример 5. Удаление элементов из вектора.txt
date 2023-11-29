@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <iterator>
+using namespace std;
+
+int main()
+{
+	// создание пустого вектора
+	vector<int> a;
+	// заполнение вектора элементами
+	for (int i = 0; i < 10; i++)
+		a.push_back(i);
+
+	// вывод  векторов
+	ostream_iterator<int, char> out(cout, " ");
+	cout << "Initial state: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// удаление последнего элемента вектора
+	a.pop_back();
+	cout << "After delete last element: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// удаление 2-ого элемента
+	a.erase(a.begin() + 1);
+	cout << "After delete 2-nd element: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// удаление диапазона из 3-х последних элементов
+	a.erase(a.end() - 3, a.end());
+	cout << "After delete three last element: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+}

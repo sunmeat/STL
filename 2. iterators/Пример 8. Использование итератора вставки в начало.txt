@@ -1,0 +1,40 @@
+#include <list>
+#include <iterator>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	list<int> first;
+	list<int> second;
+	list<int>::iterator temp;
+
+	// создание итератора вставки в конец контейнера
+	// в конструктор передается контейнер
+	front_insert_iterator<list<int>> fi(first);
+	front_insert_iterator<list<int>> si(second);
+
+	// вставка элементов в конец контейнера
+	for (int i = 0; i < 10; i++, fi++) *fi = i;
+
+	cout << "Initial list: " << endl;
+	for (temp = first.begin(); temp != first.end(); temp++)
+		cout << *temp << " ";
+	cout << endl << endl;
+
+	copy(first.begin(), first.end(), si);
+
+	cout << "Copy of list: " << endl;
+	for (temp = second.begin(); temp != second.end(); temp++)
+		cout << *temp << " ";
+	cout << endl << endl;
+
+	// добавление 2 элементов с использованием функции front_inserter
+	front_inserter(second) = 11;
+	front_inserter(second) = 12;
+	cout << "Add some new data: " << endl;
+	for (temp = second.begin(); temp != second.end(); temp++)
+		cout << *temp << " ";
+	cout << endl << endl;
+
+}

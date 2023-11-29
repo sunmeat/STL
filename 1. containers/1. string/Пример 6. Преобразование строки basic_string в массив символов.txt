@@ -1,0 +1,32 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+#pragma warning(disable:4996)
+
+int main()
+{
+	string s("123");
+	string s1("123-456-789");
+	cout << "s: " << s << endl;
+	cout << "s1: " << s1 << endl;
+
+	// преобразование в строку в стиле С для передачи в функцию
+        // а вообще есть функция http://www.cplusplus.com/reference/string/stoi/ 
+	cout << "atoi(s.c_str()) = " << atoi(s.c_str()) << endl;
+	
+	//получение массива символов с помощью метода data
+	const char* dat = s.data();
+	cout << "s.data(): ";
+	for (int i = 0; i < 3; i++) cout << dat[i];
+	cout << endl;
+
+	char dat1[3];
+	// получение массива символов с помощью метода copy
+	// копирует 3 символа, начиная с 4-ого
+	s1.copy(dat1, 3, 4);
+	cout << "s1.copy(dat1,3,4): ";
+	for (int i = 0; i < 3; i++) cout << dat1[i];
+	cout << endl;
+
+}

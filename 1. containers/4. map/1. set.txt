@@ -1,0 +1,68 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+bool fncomp(int lhs, int rhs)
+{
+	return lhs < rhs;
+}
+
+struct classcomp
+{
+	bool operator() (const int& lhs, const int& rhs) const
+	{
+		return lhs < rhs;
+	}
+};
+
+int main()
+{
+	set<int> first;                                // empty set of ints
+
+	int myints[] = { 10, 20, 30, 40, 50 };
+	set<int> second(myints, myints + 5);           // range
+
+	set<int> third(second);                        // a copy of second
+
+	set<int> fourth(second.begin(), second.end()); // iterator ctor.
+
+	set<int, classcomp> fifth;                     // class as Compare
+
+	bool(*fn_pt)(int, int) = fncomp;
+	set<int, bool(*)(int, int)> sixth(fn_pt);      // function pointer as Compare
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
+
+	set<int>::iterator it;
+	pair<set<int>::iterator, bool> ret;
+
+	// set some initial values:
+	for (int i = 1; i <= 5; ++i) first.insert(i * 10); // set: 10 20 30 40 50
+
+	ret = first.insert(20); // no new element inserted
+
+	if (ret.second == false) it = ret.first; // "it" now points to element 20
+
+	first.insert(it, 25); 
+	first.insert(it, 24); 
+
+	int ar[] = { 5, 10, 15 }; // 10 already in set, not inserted
+	first.insert(ar, ar + 3);
+
+	cout << "set contains:";
+	for (it = first.begin(); it != first.end(); ++it)
+		cout << ' ' << *it;
+	cout << '\n';
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
+
+	it = first.find(20);
+	first.erase(it);
+	first.erase(first.find(40));
+
+	cout << "now set contains:";
+	for (it = first.begin(); it != first.end(); ++it)
+		cout << ' ' << *it;
+	cout << '\n';
+
+}

@@ -1,0 +1,31 @@
+#include <list>
+#include <iterator>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	list<int> b;
+
+	for (int i = 0; i < 10; i++)
+		b.push_back(i);
+
+	//list<int>::iterator pb = b.begin();
+	auto pb = b.begin();
+
+	// вывод первого элемента
+	cout << "First element: " << *pb << endl;
+
+	// перемещение на 3 элемента вперед
+	advance(pb, 3);
+	cout << "Move forward on 3 elements: " << *pb << endl;
+
+	// перемещение на 1 элемент назад
+	advance(pb, -1);
+	cout << "Move backward on 1 element: " << *pb << endl;
+
+	// bad idea!
+	// auto prefirst = b.begin();
+	// advance(prefirst, -1); // runtime error!
+
+}

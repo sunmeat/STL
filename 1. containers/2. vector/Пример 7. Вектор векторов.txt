@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	rand();
+
+	int width = 10;
+	int height = 5;
+	vector<vector<int>> v;
+
+	for (int y = 0; y < height; y++)
+	{
+		vector<int> temp;
+		for (int x = 0; x < width; x++)
+		{
+			temp.push_back(rand());
+			cout << temp[x] << "\t";
+		}
+		v.push_back(temp);
+		cout << "\n";
+	}
+
+	////////////////////////////////////////////////////////
+
+	cout << "\n\n";
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			cout << v[y][x] << "\t";
+		}
+		cout << "\n";
+	}
+
+}

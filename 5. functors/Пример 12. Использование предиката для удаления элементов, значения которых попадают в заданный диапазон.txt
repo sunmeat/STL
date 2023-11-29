@@ -1,0 +1,44 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <iterator>
+using namespace std;
+
+// функтор реализует предикат для проверки попадания элемента в диапазон
+class DelRange
+{
+	int low, high;
+
+public:
+	DelRange(int l, int h)
+	{
+		low = l;
+		high = h;
+	}
+
+	bool operator() (int some_value)
+	{
+		return low <= some_value && high >= some_value;
+	}
+};
+
+int main()
+{
+	int ar[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	vector<int> a(ar, ar + 9);
+	vector<int>::iterator it;
+	ostream_iterator<int> out(cout, " ");
+
+	cout << "Initial state: " << endl;
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// использование предиката для удаления элементов
+	it = remove_if(a.begin(), a.end(), DelRange(2, 5));
+	a.erase(it, a.end());
+
+	cout << "After delete range from 2 to 5: " << endl;
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+}

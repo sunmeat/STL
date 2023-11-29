@@ -1,0 +1,27 @@
+#include <list>
+#include <iterator>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	list<int> b;
+	list<int>::iterator pb;
+	list<int>::reverse_iterator rpb;
+
+	for (int i = 0; i < 10; i++)
+		b.push_back(i);
+
+	// вывод элементов в прямом направлении
+	cout << "Forward iterator: " << endl;
+	for (pb = b.begin(); pb != b.end(); pb++)
+		cout << *pb << " ";
+	cout << endl;
+
+	// вывод элементов в обратном направлении (с использованием обратного итератора)
+	cout << "Backword iterator: " << endl;
+	for (rpb = b.rbegin(); rpb != b.rend(); rpb++)
+		cout << *rpb << " ";
+	cout << endl;
+
+}

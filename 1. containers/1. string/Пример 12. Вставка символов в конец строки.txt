@@ -1,0 +1,33 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	string str1("Playing ");
+	const char* str2 = "with a simple string";
+	cout << "str1: " << str1 << endl;
+	cout << "str2: " << str2 << endl;
+
+	//добавление всей строки str2 в конец строки str1
+	str1.append(str2);
+	cout << "Operation: str1.append(str2)\nResult: " << str1 << "\n\n";
+
+
+	string str3("Travel ");
+	cout << "str3: " << str3 << endl;
+	//добавление 4 символов строки str2 в конец строки str3
+	str3.append(str2, 4);
+	cout << "Operation: str3.append(str2, 4)\nResult: " << str3 << "\n\n";
+
+	string str4("It is ");
+	cout << "str4: " << str4 << endl;
+	//добавление 6 символов строки str2, начиная с 14-ого, в конец строки str3
+	str4.append(str2, 14, 6);
+	cout << "Operation: str4.append(str2, 14, 6)\nResult: " << str4 << "\n\n";
+
+	//добавление 1 символа с помощью push_back
+	str4.push_back('!');
+	cout << "Operation: str4.push_back('!')\nResult: " << str4 << "\n\n";
+
+}

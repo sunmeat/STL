@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool CmpAbs(int a, int b)
+{
+	return abs(a) < abs(b);
+}
+
+int main()
+{
+	int ar[] = { -1, 2, -8, 4, 6 };
+	vector<int> a = vector<int>(ar, ar + 5);
+
+	// функции возвращают итератор, поэтому надо производить его разыменование
+	cout << "min element: " << *min_element(a.begin(), a.end()) << endl;
+	cout << "min element by absolute value: " << *min_element(a.begin(), a.end(), CmpAbs) << endl;
+
+	cout << "max element: " << *max_element(a.begin(), a.end()) << endl;
+	cout << "max element by absolute value: " << *max_element(a.begin(), a.end(), CmpAbs) << endl;
+
+}

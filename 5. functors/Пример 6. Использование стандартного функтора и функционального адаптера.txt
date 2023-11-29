@@ -1,0 +1,38 @@
+#include <iostream>
+#include <functional>
+#include <list>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+int main()
+{
+	int ar[] = { 2, 4, 6, 8, 10, 12, 14 };
+
+	list<int> a = list<int>(ar, ar + 7);
+
+	ostream_iterator<int> out(cout, " ");
+	cout << "Initial state: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// удаление элементов списка со значением большим или равным заданному (10)
+	// 2-ой параметр функтора связывается с числом 10
+	a.remove_if(bind2nd(greater_equal<int>(), 10));
+	cout << "After delete elements >= 10: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// умножение элементов списка на заданное число (2)
+	// 2-ой параметр функтора связывается с числом 2
+	cout << "list element * 2: ";
+	transform(a.begin(), a.end(), out, bind2nd(multiplies<int>(), 2));
+	cout << endl;
+
+	// вычитание элементов списка из заданного числа (100)
+	// 1-ый параметр функтора связывается с числом 100
+	// http://www.cplusplus.com/reference/functional/minus/
+	cout << "100 - list element: ";
+	transform(a.begin(), a.end(), out, bind1st(minus<int>(), 100));
+	cout << endl;
+}

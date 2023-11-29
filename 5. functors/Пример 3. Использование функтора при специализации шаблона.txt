@@ -1,0 +1,63 @@
+#include <iostream>
+#include <set>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+// класс, описывающий книгу
+class Book
+{
+public:
+	string subject; // предметная область
+	string theme;   // тема
+	string name;    // название
+	Book(string iSubject, string iTheme, string iName) : subject(iSubject), theme(iTheme), name(iName){}
+};
+
+// функтор-предикат, используется для задания критерия упорядочения контейнера
+// подобные классы называются компараторами
+class cmpBooks
+{
+public:
+	// оператор () используется для сравнения книг по области знаний,
+	// а в пределах одной области знаний - по тематике
+	bool operator() (const Book& a, const Book& b)
+	{
+		if (a.subject == b.subject)	return a.theme < b.theme;
+		return (a.subject < b.subject);
+	}
+};
+
+// функция сравнения (не может быть использована в качестве значения шаблонного параметра!)
+bool cmpBooksFunc(const Book& a, const Book& b)
+{
+	if (a.subject == b.subject)	return a.theme < b.theme;
+	return (a.subject < b.subject);
+}
+
+// функция не может использоваться в качестве значения параметра шаблона 
+// typedef set<Book, cmpBooksFunc> setBooks; // error!
+
+// а вот функтор - может использоваться в качестве значения параметра шаблона 
+typedef set<Book, cmpBooks> setBooks;
+
+int main()
+{
+	setBooks b; // множество (дерево) книг
+	
+	// добавление книг
+	b.insert(Book("Nature", "Oceans", "The Pacific"));
+	b.insert(Book("Technics", "Hardware", "PC"));
+	b.insert(Book("Nature", "Animals", "Cats"));
+
+	// вывод книг
+	setBooks::iterator it;
+	for (it = b.begin(); it != b.end(); it++)
+		cout << (*it).subject << " " << (*it).theme << " " << (*it).name << "\n";
+	cout << "\n\n";
+
+	for (auto book : b)
+		cout << book.subject << " " << book.theme << " " << book.name << "\n";
+	cout << "\n\n";
+
+}

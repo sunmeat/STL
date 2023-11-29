@@ -1,0 +1,42 @@
+#include <iostream>
+#include <functional>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+// создание собственного функционального объекта для возведения числа в степень
+// наследование от binary_function для определения типов аргументов и типа результата
+template <class arg1, class arg2>
+struct MyPower : public binary_function<arg1, arg2, arg1>
+{
+	arg1 operator()(arg1 a, arg2 b) const
+	{
+		return pow(a, b);
+	}
+};
+
+int main()
+{
+	double ar[] = { 2, 5, 7 };
+
+	vector<double> a = vector<double>(ar, ar + 3);
+
+	ostream_iterator<double> out(cout, " ");
+	cout << "Initial state: ";
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// использование функционального адаптера с собственным функтором
+	// для вывода квадратов элементов
+	cout << "vector elements in power 2: ";
+	transform(a.begin(), a.end(), out, bind2nd(MyPower<double, double>(), 2));
+	cout << endl;
+
+	// использование функционального адаптера с собственным функтором
+	// для возведения 2 в степень, равную элементам массива
+	cout << "2 in power of vector elements: ";
+	transform(a.begin(), a.end(), out, bind1st(MyPower<double, double>(), 2));
+	cout << endl;
+
+}

@@ -1,0 +1,49 @@
+#include <iostream>
+#include <list>
+#include <algorithm>
+#include <iterator>
+using namespace std;
+
+class cmp
+{
+	int value;
+
+public:
+	cmp(int value)
+	{
+		this->value = value;
+	}
+
+	// оператор () используетс€ дл€ сравнени€ элементов
+	// контейнера со значением, сохранЄнным в классе
+	bool operator() (int some_number_from_container)
+	{
+		return some_number_from_container < value;
+	}
+};
+
+int main()
+{
+	// объ€вление и заполнение списка
+	int ar[] = { 1, 3, 2, 5, 8, 6, 7, 9, 4, 0 };
+	list<int> a = list<int>(ar, ar + 10);
+	ostream_iterator<int> out(cout, " ");
+
+	// вывод начального состо€ни€ списка
+	cout << "Initial state: " << endl;
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// удаление элементов со значением меньше 3 с использованием функтора-предиката
+	a.remove_if(cmp(3));
+	cout << endl << "After remove less then 3: " << endl;
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+	// удаление элементов со значением меньше 6 с использованием функтора-предиката
+	a.remove_if(cmp(6));
+	cout << endl << "After remove less then 6: " << endl;
+	copy(a.begin(), a.end(), out);
+	cout << endl;
+
+}

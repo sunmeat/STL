@@ -1,0 +1,30 @@
+#include <map>
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	map <string, string> m;
+	
+	// «аполнение карты названи€ми городов и достопримечательност€ми
+	m.insert(make_pair("Odessa", "Opera Theatre"));
+	m.insert(make_pair("London", "Big Ben"));
+	m.insert(make_pair("Paris", "Louvre"));
+
+	map <string, string>::iterator it;
+	cout << "Initial State: " << endl;
+	for (it = m.begin(); it != m.end(); it++)
+		cout << it->first << " " << it->second << endl;
+
+	// непосредсвенно ключ заменить нельз€:
+	// m.begin()->first = "Odesa"; // ошибка присвоени€ значени€ операнду типа const string
+	// ƒл€ изменени€ надо удалить, а потом добавить: 
+	
+	m.erase("Odessa");
+	m.insert(make_pair("Odesa", "Opera Theatre"));
+	cout << endl << "After change key: " << endl;
+	
+	for (it = m.begin(); it != m.end(); it++)
+		cout << it->first << " " << it->second << endl;
+}

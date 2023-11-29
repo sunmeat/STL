@@ -1,0 +1,33 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	string s = "I am here. Try to find me.";
+	// поиск первого вхождения символа e
+	cout << "s.find('e'): " << s.find('e') << endl;
+	
+	// поиск последнего вхождения символа e
+	cout << "s.rfind('e'): " << s.rfind('e') << endl;
+	
+	// поиск первого вхождения символа e после 10 идекса
+	cout << "s.find('e', 10): " << s.find('e', 10) << endl;
+	
+	// поиск первого вхождения подстроки 'am'
+	cout << "s.find('am'): " << s.find("am") << endl;
+	
+	// поиск первого вхождения любого символа из подстроки 'he'
+	cout << "s.find_first_of('he')" << s.find_first_of("he") << endl;
+	
+	// поиск последнего вхождения любого символа из подстроки 'he'
+	cout << "s.find_last_of('he')" << s.find_last_of("he") << endl;
+	
+	// поиск символа, который в строке не содержится
+	cout << "s.find('F')" << s.find('F') << endl;
+	
+	// проверка возвращаемого значения
+	if (s.find('F') == string::npos) cout << "Symbol not found" << endl;
+	
+	// s.replace!
+}
